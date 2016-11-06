@@ -1,0 +1,23 @@
+{
+  "name": "fincontrol",
+  "description": "An app to control your income and outcome",
+  "authors": [
+    "Oleg Omelchenko"
+  ],
+  "license": "ISC",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "tmp",
+    "dist"
+  ],
+  "dependencies": {
+    "angular": "^1.5.0",
+    "angular-ui-router": "1.0.0-beta.1",
+    "angularfire": "^2.0.2",
+    "ngstorage": "^0.3.11",
+    "angular-material": "^1.1.1"
+  }
+}
