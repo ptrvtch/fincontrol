@@ -3,7 +3,7 @@ var gulp = require('gulp'),
     inject = require('gulp-inject'),
     gulpif = require('gulp-if'),
     useref = require('gulp-useref'),
-    // uglify = require('gulp-uglify'),
+    uglify = require('gulp-uglify'),
     // minifyCss = require('gulp-clean-css'),
     browserSync = require('browser-sync').create();
 
@@ -32,8 +32,7 @@ gulp.task('inject', ['scripts', 'styles'], function () {
 gulp.task('useref', ['inject'], function () {
     return gulp.src('./tmp/index.html')
         .pipe(useref())
-        // .pipe(gulpif('*.js', uglify()))
-        // .pipe(gulpif('*.css', minifyCss()))
+        .pipe(gulpif('**/*.js', uglify()))
         .pipe(gulp.dest('./dist'));
 });
 
