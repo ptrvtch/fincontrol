@@ -1,4 +1,6 @@
-angular.module("app", [])
+angular.module("app", [
+    'ngMaterial'
+])
     .config(config)
     .run(run);
 
@@ -9,5 +11,5 @@ function config($mdThemingProvider) {
 }
 
 function run() {
-    console.info('run')
+    
 }

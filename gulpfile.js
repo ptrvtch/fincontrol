@@ -4,11 +4,12 @@ var gulp = require('gulp'),
     gulpif = require('gulp-if'),
     useref = require('gulp-useref'),
     uglify = require('gulp-uglify'),
-    // minifyCss = require('gulp-clean-css'),
+    ngAnnotate = require('gulp-ng-annotate'),
     browserSync = require('browser-sync').create();
 
 gulp.task('scripts', function () {
     return gulp.src(["./src/**/*.js"])
+        .pipe(ngAnnotate())
         .pipe(gulp.dest('./tmp')
         );
 });
