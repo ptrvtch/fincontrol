@@ -5,7 +5,13 @@ var gulp = require('gulp'),
     useref = require('gulp-useref'),
     uglify = require('gulp-uglify'),
     ngAnnotate = require('gulp-ng-annotate'),
-    browserSync = require('browser-sync').create();
+    browserSync = require('browser-sync').create(),
+    templateCache = require('gulp-angular-templatecache');
+ 
+gulp.task('templates', function () {
+  return gulp.src(['./src/**/*.html', '!./src/index.html'])
+    .pipe(gulp.dest('./tmp'));
+});
 
 gulp.task('scripts', function () {
     return gulp.src(["./src/**/*.js"])
@@ -14,13 +20,12 @@ gulp.task('scripts', function () {
         );
 });
 
-
 gulp.task('styles', function () {
     return gulp.src(["./src/**/*.css"])
         .pipe(gulp.dest('./tmp'));
 });
 
-gulp.task('inject', ['scripts', 'styles'], function () {
+gulp.task('inject', ['scripts', 'styles', 'templates'], function () {
     var sources = gulp.src(["./tmp/**/*.{css,js}"], { read: false });
     return gulp.src('./src/index.html')
         .pipe(wiredep())
@@ -33,7 +38,7 @@ gulp.task('inject', ['scripts', 'styles'], function () {
 gulp.task('useref', ['inject'], function () {
     return gulp.src('./tmp/index.html')
         .pipe(useref())
-        .pipe(gulpif('**/*.js', uglify()))
+        // .pipe(gulpif('**/*.js', uglify()))
         .pipe(gulp.dest('./dist'));
 });
 
