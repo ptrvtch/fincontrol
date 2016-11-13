@@ -1,8 +1,4 @@
 angular.module('app')
-    .controller('testCtrl', testCtrl);
-/*@ngInject*/
-function testCtrl() {
-    console.log('testCtrl')
-    var vm = this;
-    this.hello = 'world';
-}  
+    .component('main', {
+        templateUrl: 'app/app.html'
+    });

@@ -6,11 +6,18 @@ var gulp = require('gulp'),
     uglify = require('gulp-uglify'),
     ngAnnotate = require('gulp-ng-annotate'),
     browserSync = require('browser-sync').create(),
-    templateCache = require('gulp-angular-templatecache');
- 
+    templateCache = require('gulp-angular-templatecache'),
+    clean = require('gulp-clean');
+
+gulp.task('clean', function () {
+    return gulp.src(['./tmp', './dist'], { read: false })
+        .pipe(clean());
+});
+
 gulp.task('templates', function () {
-  return gulp.src(['./src/**/*.html', '!./src/index.html'])
-    .pipe(gulp.dest('./tmp'));
+    return gulp.src(['./src/**/*.html', '!./src/index.html'])
+        .pipe(templateCache('templates.js', { standalone: true, module: 'templates' }))
+        .pipe(gulp.dest('./tmp'));
 });
 
 gulp.task('scripts', function () {
