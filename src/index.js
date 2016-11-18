@@ -27,6 +27,13 @@ function config($locationProvider, $mdThemingProvider, $stateProvider, $urlRoute
     });
 }
 
-function run($log) {
+function run($log, $firebaseAuth) {
     $log.info('Loaded successfully at ' + new Date().toLocaleString('ru'));
+    var user = $firebaseAuth().$getAuth();
+
+    if (user) {
+        $log.info("Signed in as:", user.uid);
+    } else {
+        $log.info("Not signed in");
+    }
 }
