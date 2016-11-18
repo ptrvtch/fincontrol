@@ -16,7 +16,7 @@ angular.module("app", [
     .run(run);
 
 
-function config($locationProvider, $mdThemingProvider, $stateProvider, $urlRouterProvider) {
+function config($locationProvider, $mdThemingProvider, $stateProvider, $urlRouterProvider, $mdIconProvider) {
     $locationProvider.html5Mode(true).hashPrefix('');
     $mdThemingProvider.theme('altTheme')
         .primaryPalette('purple');
@@ -25,6 +25,7 @@ function config($locationProvider, $mdThemingProvider, $stateProvider, $urlRoute
         url: '/',
         component: 'main'
     });
+    $mdIconProvider.defaultIconSet('img/mdi.svg')
 }
 
 function run($log, $firebaseAuth) {

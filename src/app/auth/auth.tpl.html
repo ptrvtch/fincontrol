@@ -1,0 +1,34 @@
+<md-dialog>
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h2>Authentication</h2>
+            <span flex></span>
+            <md-button class="md-icon-button" ng-click="vm.cancel()" aria-label="cancel">
+                <md-icon md-svg-icon="close"></md-icon>
+            </md-button>
+        </div>
+    </md-toolbar>
+    <md-dialog-content>
+        <div class="md-dialog-content">
+            <md-list flex>
+                <md-list-item ng-click="vm.google()">
+                    <md-icon md-svg-icon="google" class="md-avatar"></md-icon>
+                    <h3>Google login</h3>
+                </md-list-item>
+                <md-list-item ng-click="vm.facebook()">
+                    <md-icon md-svg-icon="facebook" class="md-avatar"></md-icon>
+                    <h3>Facebook login</h3>
+                </md-list-item>
+            </md-list>
+        </div>
+    </md-dialog-content>
+    <!--<md-dialog-actions layout="row">
+        <span flex></span>
+        <md-button ng-click="vm.cancel()">
+            cancel
+        </md-button>
+        <md-button ng-click="vm.google()">
+            Google
+        </md-button>
+    </md-dialog-actions>-->
+</md-dialog>
