@@ -19,6 +19,6 @@ function config($locationProvider, $mdThemingProvider, $stateProvider, $urlRoute
     });
 }
 
-function run() {
-    
+function run($log) {
+    $log.info('Loaded successfully at ' + new Date().toLocaleString('ru'));
 }

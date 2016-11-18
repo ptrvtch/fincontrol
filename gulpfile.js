@@ -58,7 +58,8 @@ gulp.task('serve', ['useref'], function () {
     browserSync.init({
         server: {
             baseDir: "./dist"
-        }
+        },
+        port: 8269
     });
 
     gulp.watch(["./src/**/*.{html,htm,css,js}"], ['watch']);
