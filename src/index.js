@@ -1,3 +1,11 @@
+firebase.initializeApp({
+    apiKey: "AIzaSyD0P31Pi_HdRSCp0f2yQuKZD2C-KmYS7GU",
+    authDomain: "fincontrol-6f11a.firebaseapp.com",
+    databaseURL: "https://fincontrol-6f11a.firebaseio.com",
+    storageBucket: "fincontrol-6f11a.appspot.com",
+    messagingSenderId: "916230721775"
+});
+
 angular.module("app", [
     'templates',
     'ui.router',
