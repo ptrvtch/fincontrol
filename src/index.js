@@ -20,23 +20,46 @@ function config($locationProvider, $mdThemingProvider, $stateProvider, $urlRoute
     $locationProvider.html5Mode(true).hashPrefix('');
     $mdThemingProvider.theme('altTheme')
         .primaryPalette('purple');
+
     $urlRouterProvider.otherwise('/');
-    $stateProvider.state('main', {
-        url: '/',
-        component: 'main'
-    });
+
+    $stateProvider
+        .state('main', {
+            url: '',
+            component: 'main',
+            abstract: true
+        })
+        .state('main.greeting', {
+            url: '/',
+            views: {
+                'content': {
+                    component: 'greeting'
+                }
+            }
+        })
+        .state('main.dashboard', {
+            url: '/dashboard',
+            views: {
+                'content': {
+                    component: 'dashboard'
+                }
+            }
+        });
+
     $mdIconProvider.defaultIconSet('img/mdi.svg')
 }
 
-function run($log, $firebaseAuth, $rootScope) {
+function run($log, $firebaseAuth, $rootScope, $state) {
     $log.info('Loaded successfully at ' + new Date().toLocaleString('ru'));
 
-    $firebaseAuth().$onAuthStateChanged(function(firebaseUser) {
+    $firebaseAuth().$onAuthStateChanged(function (firebaseUser) {
         if (firebaseUser) {
             $rootScope.user = firebaseUser;
             $log.info(firebaseUser);
+            $state.go('main.dashboard');
         } else {
             $log.info("not signed in");
+            $state.go('main.greeting');
         }
     });
 }

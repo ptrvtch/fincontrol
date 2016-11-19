@@ -7,7 +7,8 @@ var gulp = require('gulp'),
     ngAnnotate = require('gulp-ng-annotate'),
     browserSync = require('browser-sync').create(),
     templateCache = require('gulp-angular-templatecache'),
-    clean = require('gulp-clean');
+    clean = require('gulp-clean'),
+    historyApiFallback = require('connect-history-api-fallback');
 
 gulp.task('clean', function () {
     return gulp.src(['./tmp', './dist'], { read: false })
@@ -57,7 +58,8 @@ gulp.task('watch', ['useref'], function (done) {
 gulp.task('serve', ['useref'], function () {
     browserSync.init({
         server: {
-            baseDir: "./dist"
+            baseDir: "./dist",
+            middleware: [ historyApiFallback() ]
         },
         port: 8269
     });
