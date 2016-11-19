@@ -12,7 +12,7 @@ angular.module("app", [
     'ui.router',
     'firebase',
     'ngMaterial',
-    'mdDataTable'
+    'md.data.table'
 ])
     .config(config)
     .run(run);
@@ -56,8 +56,6 @@ function config($locationProvider, $mdThemingProvider, $stateProvider, $urlRoute
 
 function run($log, $firebaseAuth, $rootScope, $state, $firebaseObject, db) {
     $log.info('Loaded successfully at ' + new Date().toLocaleString('ru'));
-
-    var obj = $firebaseObject(firebase.database().ref());
 
     $rootScope.$on('$stateChangeStart', securityFn);
 

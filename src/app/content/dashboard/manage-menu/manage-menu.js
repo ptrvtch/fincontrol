@@ -27,26 +27,26 @@ function manageMenuCtrl($log, $state, $scope, $mdDialog, auth, db) {
             }, function () {
                 vm.status = 'You cancelled the dialog.';
             });
-    }
+    };
 
     vm.setType = function (isExpense) {
         vm.transaction.catId = '';
         if (isExpense) {
-            vm.categories = vm.getExpenseCategories()
+            vm.categories = vm.getExpenseCategories();
         } else {
-            vm.categories = vm.getIncomeCategories()
+            vm.categories = vm.getIncomeCategories();
         }
     };
 
     vm.cancelModal = function () {
         $mdDialog.cancel();
-    }
+    };
 
     vm.addIncome = function () {
         var dateString = (vm.transaction.date)? vm.transaction.date.toString() : new Date().getTime();
         vm.transaction.date = dateString;
         db.addTransaction(vm.transaction);
         $mdDialog.hide();
-    }
+    };
 
 }

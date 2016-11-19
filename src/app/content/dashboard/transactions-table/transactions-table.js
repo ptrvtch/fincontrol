@@ -1,11 +1,17 @@
 angular.module('app')
-    .component('paymentsTable', {
-        templateUrl: 'app/content/dashboard/payments-table/payments-table.tpl.html',
-        controller: 'paymentsTableCtrl as vm'
+    .component('transactionsTable', {
+        templateUrl: 'app/content/dashboard/transactions-table/transactions-table.tpl.html',
+        controller: 'transactionsTableCtrl as vm'
     })
-    .controller('paymentsTableCtrl', manageMenuCtrl);
+    .controller('transactionsTableCtrl', transactionsTableCtrl);
 
-function paymentsTableCtrl($log, $state, $scope, auth) {
+function transactionsTableCtrl($log, $state, $scope, auth, db) {
     var vm = this;
-    $log.info('paymentsTableCtrl activated');
+    $log.info('transactionsTableCtrl activated');
+
+    vm.getTransactions = db.getTransactions;
+
+    vm.test = vm.getTransactions();
+    $log.info('transactions:',vm.test);
+
 }
