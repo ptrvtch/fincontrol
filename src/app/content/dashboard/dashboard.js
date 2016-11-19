@@ -7,6 +7,7 @@ angular.module('app')
 
 function dashboardCtrl($log, $state, $scope, auth) {
     var vm = this;
+    vm.getUser = auth.getUser;
     $log.info('dashboardCtrl activated');
 
 }
