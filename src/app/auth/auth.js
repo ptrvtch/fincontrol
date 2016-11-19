@@ -22,7 +22,7 @@ function auth($log, $firebaseAuth, $rootScope) {
     }
 
     function getUser() {
-        return userData;
+        return $rootScope.user;
     }
 
     function signOut() {

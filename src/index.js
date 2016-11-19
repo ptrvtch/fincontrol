@@ -10,7 +10,8 @@ angular.module("app", [
     'templates',
     'ui.router',
     'firebase',
-    'ngMaterial'
+    'ngMaterial',
+    'mdDataTable'
 ])
     .config(config)
     .run(run);
@@ -43,23 +44,39 @@ function config($locationProvider, $mdThemingProvider, $stateProvider, $urlRoute
                 'content': {
                     component: 'dashboard'
                 }
+            },
+            resolve: {
+                security: securityFn
             }
         });
 
     $mdIconProvider.defaultIconSet('img/mdi.svg')
 }
 
-function run($log, $firebaseAuth, $rootScope, $state) {
+function run($log, $firebaseAuth, $rootScope, $state, $firebaseObject, db) {
     $log.info('Loaded successfully at ' + new Date().toLocaleString('ru'));
+
+    var obj = $firebaseObject(firebase.database().ref());
+
+    $rootScope.$on('$stateChangeStart', securityFn);
 
     $firebaseAuth().$onAuthStateChanged(function (firebaseUser) {
         if (firebaseUser) {
             $rootScope.user = firebaseUser;
             $log.info(firebaseUser);
+            db.connect();
             $state.go('main.dashboard');
         } else {
             $log.info("not signed in");
             $state.go('main.greeting');
         }
     });
+}
+
+function securityFn($log, auth, $state) {
+    $log.info('securityFn');
+    if (!auth.getUser()) {
+        $log.info('ui-state: not authenticated');
+        $state.go('main.greeting');
+    }
 }

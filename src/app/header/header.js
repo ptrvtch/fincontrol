@@ -9,7 +9,6 @@ function headerCtrl($log, $mdDialog, auth, $scope) {
     $log.info('headerCtrl loaded!');
     var vm = this;
     vm.getUser = auth.getUser;
-    $log.info('user is: ' + vm.user)
 
     vm.openSignin = function (ev) {
         $log.info('openSignin modal opened', ev);

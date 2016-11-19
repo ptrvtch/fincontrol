@@ -19,6 +19,7 @@
     "angularfire": "^2.0.2",
     "ngstorage": "^0.3.11",
     "angular-material": "^1.1.1",
-    "normalize-css": "^5.0.0"
+    "normalize-css": "^5.0.0",
+    "md-data-table": "^2.1.0"
   }
 }
