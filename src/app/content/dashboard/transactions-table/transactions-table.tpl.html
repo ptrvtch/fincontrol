@@ -4,20 +4,20 @@
             <tr md-row>
                 <!--<th md-column>Type</th>-->
                 <th md-column>Info</th>
-                <th md-column hide-gt-xs>Category</th>
-                <th md-column hide-gt-xs>Account</th>
+                <th md-column hide-xs>Category</th>
+                <th md-column hide-xs>Account</th>
                 <th md-column md-numeric>Amount</th>
-                <th md-column hide-gt-xs md-date>Date</th>
+                <th md-column hide-xs md-date>Date</th>
             </tr>
         </thead>
         <tbody md-body>
-            <tr md-row md-auto-select ng-repeat="transaction in vm.getTransactions()">
+            <tr md-row md-auto-select ng-class="{{(transaction.isExpense)? '{expense: true}' : '{income: true}'}}" ng-repeat="transaction in vm.getTransactions()">
                 <!--<tr md-cell>{{transaction.isExpense}}</tr>-->
                 <td md-cell>{{transaction.info}}</td>
-                <td md-cell hide-gt-xs>{{transaction.catId}}</td>
-                <td md-cell hide-gt-xs>{{transaction.accId}}</td>
-                <td md-cell>{{transaction.amount}} {{ (transaction.isExpense)? 'exp' : 'inc' }}</td>
-                <td md-cell hide-gt-xs>{{transaction.date | date:'medium'}}</td>
+                <td md-cell hide-xs>{{transaction.catId}}</td>
+                <td md-cell hide-xs>{{transaction.accId}}</td>
+                <td md-cell>{{transaction.amount}}</td>
+                <td md-cell hide-xs>{{transaction.date | date:'mediumDate'}}</td>
             </tr>
         </tbody>
     </table>

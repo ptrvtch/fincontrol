@@ -63,7 +63,6 @@ function db($log, $firebaseObject, $firebaseArray, auth) {
                     $incomeCategories.$add(cat);
                 });
                 $incomeCategories.$save().then(function () {
-                    $log.debug('income categories:', $incomeCategories);
                 });
             }
         });
@@ -71,13 +70,11 @@ function db($log, $firebaseObject, $firebaseArray, auth) {
         //populate default expense categories
         $firebaseArray(userRef.child('expenseCategories')).$loaded(function (data) {
             $expenseCategories = data;
-            $log.debug('expense categories:', $expenseCategories);
             if ($expenseCategories.length == 0) {
                 defExpenseCategories.forEach(function (cat) {
                     $expenseCategories.$add(cat);
                 });
                 $expenseCategories.$save().then(function () {
-                    $log.debug('expense categories:', $expenseCategories);
                 });
             }
         });
