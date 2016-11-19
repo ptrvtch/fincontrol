@@ -8,6 +8,7 @@ firebase.initializeApp({
 
 angular.module("app", [
     'templates',
+    'ngMessages',
     'ui.router',
     'firebase',
     'ngMaterial',

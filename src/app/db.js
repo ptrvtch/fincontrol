@@ -3,24 +3,42 @@ angular.module('app')
 
 function db($log, $firebaseObject, $firebaseArray, auth) {
     $log.info('db service loaded');
-    var userRef,
-        user;
+    var userRef, accountsRef,
+        $user, $accounts;
+
+    var defAccounts = [
+        'Cash',
+        'CreditCard'
+    ]
 
     function connect() {
         var uid = auth.getUser().uid;
         $log.info('uid is ', uid);
         userRef = firebase.database().ref('users/' + uid);
-        user = $firebaseObject(userRef);
-        $log.info(user);
-        user.foo = "bar";
-        user.$save();
+        accountsRef = userRef.child("accounts");
+        $firebaseObject(userRef).$loaded(function (data) {
+            $user = data;
+        });
+        $firebaseArray(accountsRef).$loaded(function (data) {
+            $accounts = data;
+            $log.debug($accounts);
+            if ($accounts.length == 0) {
+                defAccounts.forEach(function (acc) {
+                    $accounts.$add(acc);
+                })
+                $accounts.$save().then(function () {
+                    $log.debug($accounts);
+                });
+            }
+        })
     }
 
-    // var userRef = firebase.database().ref('users/' + uid);
-    // var user = $firebaseObject(userRef);
-    // var asscns = $firebaseArray(associationsRef);
+    function getAccounts() {
+        return $accounts;
+    }
 
     return {
-        connect: connect
+        connect: connect,
+        getAccounts: getAccounts
     }
 } 
