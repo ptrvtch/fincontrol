@@ -11,7 +11,7 @@ function manageMenuCtrl($log, $state, $scope, $mdDialog, auth, db) {
     vm.getAccounts = db.getAccounts;
     vm.getIncomeCategories = db.getIncomeCategories;
     vm.getExpenseCategories = db.getExpenseCategories;
-    
+
     vm.setType = function (isExpense) {
         vm.transaction.catId = '';
         if (isExpense) {
@@ -24,20 +24,6 @@ function manageMenuCtrl($log, $state, $scope, $mdDialog, auth, db) {
     vm.transaction = {};
     vm.setType();
 
-    vm.openIncomeModal = function (ev) {
-        $mdDialog
-            .show({
-                controller: 'manageMenuCtrl as vm',
-                templateUrl: 'app/content/dashboard/manage-menu/addTransaction.tpl.html',
-                targetEvent: ev,
-                clickOutsideToClose: true
-            })
-            .then(function (answer) {
-                vm.status = 'Income added: ' + answer;
-            }, function () {
-                vm.status = 'You cancelled the dialog.';
-            });
-    };
 
 
     vm.cancelModal = function () {

@@ -5,7 +5,7 @@ angular.module('app')
     })
     .controller('headerCtrl', headerCtrl);
 
-function headerCtrl($log, $mdDialog, auth, $scope) {
+function headerCtrl($log, $mdDialog, auth, db, $scope) {
     $log.info('headerCtrl loaded!');
     var vm = this;
     vm.getUser = auth.getUser;
@@ -41,5 +41,21 @@ function headerCtrl($log, $mdDialog, auth, $scope) {
         }, function () {
             $scope.status = 'You decided to keep your debt.';
         });
-    }
+    };
+
+    vm.openIncomeModal = function (ev) {
+        $mdDialog
+            .show({
+                controller: 'manageMenuCtrl as vm',
+                templateUrl: 'app/content/dashboard/manage-menu/addTransaction.tpl.html',
+                targetEvent: ev,
+                clickOutsideToClose: true
+            })
+            .then(function (answer) {
+                vm.status = 'Income added: ' + answer;
+            }, function () {
+                vm.status = 'You cancelled the dialog.';
+            });
+    };
+
 }

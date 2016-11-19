@@ -40,7 +40,7 @@
                     <md-input-container class="md-block" flex-gt-sm>
                         <label>Account</label>
                         <md-select ng-model="vm.transaction.accId">
-                            <md-option ng-repeat="account in vm.getAccounts()" value="{{account.$id}}">
+                            <md-option ng-repeat="account in vm.getAccounts()" value="{{account.$value}}">
                                 <span>{{account.$value}}</span>
                             </md-option>
                         </md-select>
@@ -49,7 +49,7 @@
                     <md-input-container class="md-block" flex-gt-sm>
                         <label>Category</label>
                         <md-select ng-model="vm.transaction.catId">
-                            <md-option ng-repeat="category in vm.categories" value="{{category.$id}}">
+                            <md-option ng-repeat="category in vm.categories" value="{{category.$value}}">
                                 <span>{{category.$value}}</span>
                             </md-option>
                         </md-select>
