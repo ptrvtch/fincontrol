@@ -13,10 +13,8 @@ function manageMenuCtrl($log, $state, $scope, $mdDialog, auth, db) {
     vm.getExpenseCategories = db.getExpenseCategories;
 
     vm.openIncomeModal = function (ev) {
-
-        vm.transaction = {
-            type: "income"
-        };
+        vm.transaction = {};
+        vm.setType();
         $mdDialog
             .show({
                 controller: 'manageMenuCtrl as vm',
@@ -26,13 +24,12 @@ function manageMenuCtrl($log, $state, $scope, $mdDialog, auth, db) {
             })
             .then(function (answer) {
                 vm.status = 'Income added: ' + answer;
-                $mdDialog.hide(answer);
             }, function () {
-                vm.status = 'You cancelled the dialog.'; 
+                vm.status = 'You cancelled the dialog.';
             });
     }
 
-    vm.setType = function(isExpense) {
+    vm.setType = function (isExpense) {
         vm.transaction.catId = '';
         if (isExpense) {
             vm.categories = vm.getExpenseCategories()
@@ -46,7 +43,10 @@ function manageMenuCtrl($log, $state, $scope, $mdDialog, auth, db) {
     }
 
     vm.addIncome = function () {
+        var dateString = (vm.transaction.date)? vm.transaction.date.toString() : new Date().getTime();
+        vm.transaction.date = dateString;
         db.addTransaction(vm.transaction);
+        $mdDialog.hide();
     }
 
 }

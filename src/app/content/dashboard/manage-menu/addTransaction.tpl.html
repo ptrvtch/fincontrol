@@ -48,7 +48,7 @@
 
                     <md-input-container class="md-block" flex-gt-sm>
                         <label>Category</label>
-                        <md-select ng-model="vm.income.catId"> 
+                        <md-select ng-model="vm.transaction.catId">
                             <md-option ng-repeat="category in vm.categories" value="{{category.$id}}">
                                 <span>{{category.$value}}</span>
                             </md-option>
@@ -64,7 +64,7 @@
             Cancel
         </md-button>
         <md-button ng-click="vm.addIncome()" class="md-primary md-button">
-            Add income
+            Add
         </md-button>
     </md-dialog-actions>
 </md-dialog>
