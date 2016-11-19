@@ -7,6 +7,7 @@
                 <th md-column>Category</th>
                 <th md-column>Account</th>
                 <th md-column md-numeric>Amount</th>
+                <th md-column md-date>Date</th>
             </tr>
         </thead>
         <tbody md-body>
@@ -15,7 +16,8 @@
                 <td md-cell>{{transaction.info}}</td>
                 <td md-cell>{{transaction.catId}}</td>
                 <td md-cell>{{transaction.accId}}</td>
-                <td md-cell>{{transaction.amount}}{{ (transaction.isExpense)? 'exp' : 'inc' }}</td>
+                <td md-cell>{{transaction.amount}} {{ (transaction.isExpense)? 'exp' : 'inc' }}</td>
+                <td md-cell>{{transaction.date | date:'medium'}}</td>
             </tr>
         </tbody>
     </table>

@@ -85,7 +85,7 @@ function db($log, $firebaseObject, $firebaseArray, auth) {
         //populate transactions
         $firebaseArray(userRef.child('transactions')).$loaded(function(data) {
             $transactions = data;
-        })
+        });
     }
 
     function getAccounts() {

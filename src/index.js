@@ -1,12 +1,12 @@
 firebase.initializeApp({
-    apiKey: "AIzaSyD0P31Pi_HdRSCp0f2yQuKZD2C-KmYS7GU",
-    authDomain: "fincontrol-6f11a.firebaseapp.com",
-    databaseURL: "https://fincontrol-6f11a.firebaseio.com",
-    storageBucket: "fincontrol-6f11a.appspot.com",
-    messagingSenderId: "916230721775"
+    apiKey: 'AIzaSyD0P31Pi_HdRSCp0f2yQuKZD2C-KmYS7GU',
+    authDomain: 'fincontrol-6f11a.firebaseapp.com',
+    databaseURL: 'https://fincontrol-6f11a.firebaseio.com',
+    storageBucket: 'fincontrol-6f11a.appspot.com',
+    messagingSenderId: '916230721775'
 });
 
-angular.module("app", [
+angular.module('app', [
     'templates',
     'ngMessages',
     'ui.router',
@@ -20,8 +20,11 @@ angular.module("app", [
 
 function config($locationProvider, $mdThemingProvider, $stateProvider, $urlRouterProvider, $mdIconProvider) {
     $locationProvider.html5Mode(true).hashPrefix('');
-    $mdThemingProvider.theme('altTheme')
-        .primaryPalette('purple');
+    $mdThemingProvider
+        .theme('default')
+        .primaryPalette('green')
+        .accentPalette('indigo');
+
 
     $urlRouterProvider.otherwise('/');
 
@@ -51,7 +54,7 @@ function config($locationProvider, $mdThemingProvider, $stateProvider, $urlRoute
             }
         });
 
-    $mdIconProvider.defaultIconSet('img/mdi.svg')
+    $mdIconProvider.defaultIconSet('img/mdi.svg');
 }
 
 function run($log, $firebaseAuth, $rootScope, $state, $firebaseObject, db) {
@@ -66,7 +69,7 @@ function run($log, $firebaseAuth, $rootScope, $state, $firebaseObject, db) {
             db.connect();
             $state.go('main.dashboard');
         } else {
-            $log.info("not signed in");
+            $log.info('not signed in');
             $state.go('main.greeting');
         }
     });

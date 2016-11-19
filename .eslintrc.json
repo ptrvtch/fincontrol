@@ -20,5 +20,9 @@
             "warn",
             "always"
         ]
+    },
+    "globals": {
+        "angular": true,
+        "firebase": true
     }
 }
