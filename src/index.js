@@ -28,13 +28,15 @@ function config($locationProvider, $mdThemingProvider, $stateProvider, $urlRoute
     $mdIconProvider.defaultIconSet('img/mdi.svg')
 }
 
-function run($log, $firebaseAuth) {
+function run($log, $firebaseAuth, $rootScope) {
     $log.info('Loaded successfully at ' + new Date().toLocaleString('ru'));
-    var user = $firebaseAuth().$getAuth();
 
-    if (user) {
-        $log.info("Signed in as:", user.uid);
-    } else {
-        $log.info("Not signed in");
-    }
+    $firebaseAuth().$onAuthStateChanged(function(firebaseUser) {
+        if (firebaseUser) {
+            $rootScope.user = firebaseUser;
+            $log.info(firebaseUser);
+        } else {
+            $log.info("not signed in");
+        }
+    });
 }

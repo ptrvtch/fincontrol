@@ -6,8 +6,11 @@
     <!-- fill up the space between left and right area -->
     <span flex></span>
 
-    <md-button ng-click="vm.openSignin($event)">
+    <md-button ng-click="vm.openSignin($event)" ng-if="!vm.getUser()">
       Signup
+    </md-button>
+    <md-button ng-click="vm.openSignout($event)" ng-if="vm.getUser()">
+      Signout
     </md-button>
   </div>
 
