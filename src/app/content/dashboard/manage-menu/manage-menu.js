@@ -8,17 +8,19 @@ angular.module('app')
 function manageMenuCtrl($log, $state, $scope, $mdDialog, auth, db) {
     var vm = this;
     $log.info('manageMenuCtrl activated');
-    vm.accounts = db.getAccounts();
+    vm.getAccounts = db.getAccounts;
+    vm.getIncomeCategories = db.getIncomeCategories;
+    vm.getExpenseCategories = db.getExpenseCategories;
 
     vm.openIncomeModal = function (ev) {
-        
-        vm.income = {
+
+        vm.transaction = {
             type: "income"
         };
         $mdDialog
             .show({
                 controller: 'manageMenuCtrl as vm',
-                templateUrl: 'app/content/dashboard/manage-menu/addIncome.tpl.html',
+                templateUrl: 'app/content/dashboard/manage-menu/addTransaction.tpl.html',
                 targetEvent: ev,
                 clickOutsideToClose: true
             })
@@ -26,16 +28,25 @@ function manageMenuCtrl($log, $state, $scope, $mdDialog, auth, db) {
                 vm.status = 'Income added: ' + answer;
                 $mdDialog.hide(answer);
             }, function () {
-                vm.status = 'You cancelled the dialog.';
+                vm.status = 'You cancelled the dialog.'; 
             });
     }
+
+    vm.setType = function(isExpense) {
+        vm.transaction.catId = '';
+        if (isExpense) {
+            vm.categories = vm.getExpenseCategories()
+        } else {
+            vm.categories = vm.getIncomeCategories()
+        }
+    };
 
     vm.cancelModal = function () {
         $mdDialog.cancel();
     }
 
     vm.addIncome = function () {
-        $log.debug(vm.income);
+        db.addTransaction(vm.transaction);
     }
 
 }

@@ -4,11 +4,23 @@ angular.module('app')
 function db($log, $firebaseObject, $firebaseArray, auth) {
     $log.info('db service loaded');
     var userRef, accountsRef,
-        $user, $accounts;
+        $user, $accounts,
+        $incomeCategories, $expenseCategories;
 
     var defAccounts = [
         'Cash',
         'CreditCard'
+    ];
+
+    var defIncomeCategories = [
+        'Salary',
+        'Other'
+    ];
+
+    var defExpenseCategories = [
+        'Food',
+        'Communication',
+        'Other'
     ]
 
     function connect() {
@@ -19,9 +31,10 @@ function db($log, $firebaseObject, $firebaseArray, auth) {
         $firebaseObject(userRef).$loaded(function (data) {
             $user = data;
         });
+
+        // populate default accounts
         $firebaseArray(accountsRef).$loaded(function (data) {
             $accounts = data;
-            $log.debug($accounts);
             if ($accounts.length == 0) {
                 defAccounts.forEach(function (acc) {
                     $accounts.$add(acc);
@@ -31,14 +44,60 @@ function db($log, $firebaseObject, $firebaseArray, auth) {
                 });
             }
         })
+
+        //populate default income categories
+        $firebaseArray(userRef.child("incomeCategories")).$loaded(function (data) {
+            $incomeCategories = data;
+            if ($incomeCategories.length == 0) {
+                defIncomeCategories.forEach(function (cat) {
+                    $incomeCategories.$add(cat);
+                });
+                $incomeCategories.$save().then(function () {
+                    $log.debug('income categories:', $incomeCategories)
+                })
+            }
+        })
+
+        //populate default expense categories
+        $firebaseArray(userRef.child("expenseCategories")).$loaded(function (data) {
+            $expenseCategories = data;
+            $log.debug('expense categories:', $expenseCategories)
+            if ($expenseCategories.length == 0) {
+                defExpenseCategories.forEach(function (cat) {
+                    $expenseCategories.$add(cat);
+                });
+                $expenseCategories.$save().then(function () {
+                    $log.debug('expense categories:', $expenseCategories)
+                })
+            }
+        })
     }
 
     function getAccounts() {
         return $accounts;
     }
 
+    function getIncomeCategories() {
+        return $incomeCategories
+    }
+
+    function getExpenseCategories() {
+        return $expenseCategories
+    }
+
+    function addTransaction(transaction) {
+        $firebaseArray(userRef.child("transactions"))
+            .$add(transaction)
+            .then(function(data){
+                $log.info('transaction added!', data)
+            })
+    }
+
     return {
         connect: connect,
-        getAccounts: getAccounts
+        getAccounts: getAccounts,
+        getIncomeCategories: getIncomeCategories,
+        getExpenseCategories: getExpenseCategories,
+        addTransaction: addTransaction
     }
 } 

@@ -1,0 +1,70 @@
+<md-dialog>
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h2>Add income</h2>
+            <span flex></span>
+            <md-button class="md-icon-button" ng-click="vm.cancelModal()" aria-label="cancel">
+                <md-icon md-svg-icon="close"></md-icon>
+            </md-button>
+        </div>
+    </md-toolbar>
+    <md-dialog-content>
+        <div class="md-dialog-content">
+            <form name="userForm">
+                <div layout-gt-sm="row">
+                    <md-switch ng-model="vm.transaction.isExpense" ng-change="vm.setType(vm.transaction.isExpense)" aria-label="Type of transaction">
+                        <span>{{ (vm.transaction.isExpense)? 'Expense' : 'Income' }}</span>
+                    </md-switch>
+                </div>
+
+                <div layout-gt-xs="row">
+                    <md-input-container class="md-block" flex-gt-xs>
+                        <label>Amount</label>
+                        <input ng-model="vm.transaction.amount" type="number">
+                    </md-input-container>
+
+                    <md-input-container>
+                        <label>Date</label>
+                        <md-datepicker ng-model="vm.transaction.date"></md-datepicker>
+                    </md-input-container>
+                </div>
+
+                <div layout-gt-sm="row">
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Additional info</label>
+                        <input ng-model="vm.transaction.info">
+                    </md-input-container>
+                </div>
+
+                <div layout-gt-sm="row">
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Account</label>
+                        <md-select ng-model="vm.transaction.accId">
+                            <md-option ng-repeat="account in vm.getAccounts()" value="{{account.$id}}">
+                                <span>{{account.$value}}</span>
+                            </md-option>
+                        </md-select>
+                    </md-input-container>
+
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Category</label>
+                        <md-select ng-model="vm.income.catId"> 
+                            <md-option ng-repeat="category in vm.categories" value="{{category.$id}}">
+                                <span>{{category.$value}}</span>
+                            </md-option>
+                        </md-select>
+                    </md-input-container>
+                </div>
+            </form>
+        </div>
+    </md-dialog-content>
+    <md-dialog-actions layout="row">
+        <span flex></span>
+        <md-button ng-click="vm.cancelModal()">
+            Cancel
+        </md-button>
+        <md-button ng-click="vm.addIncome()" class="md-primary md-button">
+            Add income
+        </md-button>
+    </md-dialog-actions>
+</md-dialog>
