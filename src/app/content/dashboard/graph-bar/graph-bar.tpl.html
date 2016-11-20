@@ -1,0 +1,28 @@
+<div flex layout-gt-xs="row" ng-show="vm.loaded">
+    <md-card flex>
+        <md-card-title>
+            <md-card-title-text>
+                <span class="md-headline">Income Categories</span>
+            </md-card-title-text>
+        </md-card-title>
+        <md-card-content>
+            <canvas class="chart chart-pie" 
+                    chart-labels="vm.incomeChart.labels"
+                    chart-data="vm.incomeChart.data">
+            </canvas>
+        </md-card-content>
+    </md-card>
+    <md-card flex>
+        <md-card-title>
+            <md-card-title-text>
+                <span class="md-headline">Expense Categories</span>
+            </md-card-title-text>
+        </md-card-title>
+        <md-card-content>
+            <canvas class="chart chart-radar" 
+                    chart-labels="vm.expenseChart.labels"
+                    chart-data="vm.expenseChart.data">
+            </canvas>
+        </md-card-content>
+    </md-card>
+</div>

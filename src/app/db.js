@@ -1,7 +1,7 @@
 angular.module('app')
     .factory('db', db);
 
-function db($log, $firebaseObject, $firebaseArray, auth, $rootScope) {
+function db($log, $firebaseObject, $firebaseArray, auth, $rootScope, $mdToast) {
     $log.info('db service loaded');
     var userRef, accountsRef,
         $user, $accounts,
@@ -84,6 +84,9 @@ function db($log, $firebaseObject, $firebaseArray, auth, $rootScope) {
             $transactions = data;
             $rootScope.$broadcast('transactions');
         });
+        $firebaseArray(userRef.child('transactions')).$watch(function() {
+            $rootScope.$broadcast('transactionsUpdate');
+        });
     }
 
     function getAccounts() {
@@ -103,7 +106,7 @@ function db($log, $firebaseObject, $firebaseArray, auth, $rootScope) {
     }
 
     function loadTransactions() {
-        return $firebaseArray(userRef.child('transactions')).$loaded()
+        return $firebaseArray(userRef.child('transactions')).$loaded();
     }
 
     function addTransaction(transaction) {
@@ -111,6 +114,7 @@ function db($log, $firebaseObject, $firebaseArray, auth, $rootScope) {
             .$add(transaction)
             .then(function(data){
                 $log.info('transaction added!', data);
+                $rootScope.$broadcast('transactionsUpdate');
             });
     }
 

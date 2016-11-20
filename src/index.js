@@ -12,7 +12,8 @@ angular.module('app', [
     'ui.router',
     'firebase',
     'ngMaterial',
-    'md.data.table'
+    'md.data.table',
+    'chart.js'
 ])
     .config(config)
     .run(run);
