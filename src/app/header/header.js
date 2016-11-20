@@ -6,6 +6,7 @@ angular.module('app')
     .controller('headerCtrl', headerCtrl);
 
 function headerCtrl($log, $mdDialog, auth, db, $scope) {
+    $log.info('header');
     var vm = this;
     vm.getUser = auth.getUser;
 
