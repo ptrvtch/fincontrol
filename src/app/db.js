@@ -1,7 +1,7 @@
 angular.module('app')
     .factory('db', db);
 
-function db($log, $firebaseObject, $firebaseArray, auth) {
+function db($log, $firebaseObject, $firebaseArray, auth, $rootScope) {
     $log.info('db service loaded');
     var userRef, accountsRef,
         $user, $accounts,
@@ -82,6 +82,7 @@ function db($log, $firebaseObject, $firebaseArray, auth) {
         //populate transactions
         $firebaseArray(userRef.child('transactions')).$loaded(function(data) {
             $transactions = data;
+            $rootScope.$broadcast('transactions');
         });
     }
 
@@ -101,6 +102,10 @@ function db($log, $firebaseObject, $firebaseArray, auth) {
         return $transactions;
     }
 
+    function loadTransactions() {
+        return $firebaseArray(userRef.child('transactions')).$loaded()
+    }
+
     function addTransaction(transaction) {
         $firebaseArray(userRef.child('transactions'))
             .$add(transaction)
@@ -116,6 +121,7 @@ function db($log, $firebaseObject, $firebaseArray, auth) {
         getIncomeCategories: getIncomeCategories,
         getExpenseCategories: getExpenseCategories,
         addTransaction: addTransaction,
-        getTransactions: getTransactions
+        getTransactions: getTransactions,
+        loadTransactions: loadTransactions
     };
 } 

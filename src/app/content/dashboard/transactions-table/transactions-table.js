@@ -7,11 +7,9 @@ angular.module('app')
 
 function transactionsTableCtrl($log, $state, $scope, auth, db) {
     var vm = this;
-    $log.info('transactionsTableCtrl activated');
 
     vm.getTransactions = db.getTransactions;
 
     vm.test = vm.getTransactions();
-    $log.info('transactions:',vm.test);
 
 }

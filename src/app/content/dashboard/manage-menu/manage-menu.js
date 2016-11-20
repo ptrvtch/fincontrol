@@ -7,7 +7,6 @@ angular.module('app')
 
 function manageMenuCtrl($log, $state, $scope, $mdDialog, auth, db) {
     var vm = this;
-    $log.info('manageMenuCtrl activated');
     vm.getAccounts = db.getAccounts;
     vm.getIncomeCategories = db.getIncomeCategories;
     vm.getExpenseCategories = db.getExpenseCategories;
@@ -23,8 +22,6 @@ function manageMenuCtrl($log, $state, $scope, $mdDialog, auth, db) {
 
     vm.transaction = {};
     vm.setType();
-
-
 
     vm.cancelModal = function () {
         $mdDialog.cancel();

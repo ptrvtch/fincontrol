@@ -4,3 +4,319 @@
 .income {
     background-color: rgba(0,255, 0, 0.05)
 }
+
+.cssload-loader {
+	width: 425px;
+	position: absolute;
+	left: 50%;
+	margin: 2em;
+	transform: translate(-50%, -50%) rotate(180deg);
+		-o-transform: translate(-50%, -50%) rotate(180deg);
+		-ms-transform: translate(-50%, -50%) rotate(180deg);
+		-webkit-transform: translate(-50%, -50%) rotate(180deg);
+		-moz-transform: translate(-50%, -50%) rotate(180deg);
+}
+.cssload-loader .cssload-dot {
+	width: 32px;
+	height: 32px;
+	border-radius: 50%;
+	position: absolute;
+	z-index: 2;
+	top: 0px;
+	background: rgb(76,175,79);
+	animation: cssload-sway 0.38s ease infinite;
+		-o-animation: cssload-sway 0.38s ease infinite;
+		-ms-animation: cssload-sway 0.38s ease infinite;
+		-webkit-animation: cssload-sway 0.38s ease infinite;
+		-moz-animation: cssload-sway 0.38s ease infinite;
+}
+.cssload-loader .cssload-dot:nth-child(1) {
+	left: 14.28571%;
+	animation-delay: 0.2325s;
+		-o-animation-delay: 0.2325s;
+		-ms-animation-delay: 0.2325s;
+		-webkit-animation-delay: 0.2325s;
+		-moz-animation-delay: 0.2325s;
+}
+.cssload-loader .cssload-dot:nth-child(2) {
+	left: 28.57143%;
+	animation-delay: 0.475s;
+		-o-animation-delay: 0.475s;
+		-ms-animation-delay: 0.475s;
+		-webkit-animation-delay: 0.475s;
+		-moz-animation-delay: 0.475s;
+}
+.cssload-loader .cssload-dot:nth-child(3) {
+	left: 42.85714%;
+	animation-delay: 0.7075s;
+		-o-animation-delay: 0.7075s;
+		-ms-animation-delay: 0.7075s;
+		-webkit-animation-delay: 0.7075s;
+		-moz-animation-delay: 0.7075s;
+}
+.cssload-loader .cssload-dot:nth-child(4) {
+	left: 57.14286%;
+	animation-delay: 0.95s;
+		-o-animation-delay: 0.95s;
+		-ms-animation-delay: 0.95s;
+		-webkit-animation-delay: 0.95s;
+		-moz-animation-delay: 0.95s;
+}
+.cssload-loader .cssload-dot:nth-child(5) {
+	left: 71.42857%;
+	animation-delay: 1.1825s;
+		-o-animation-delay: 1.1825s;
+		-ms-animation-delay: 1.1825s;
+		-webkit-animation-delay: 1.1825s;
+		-moz-animation-delay: 1.1825s;
+}
+.cssload-loader .cssload-dot:nth-child(6) {
+	left: 85.71429%;
+	animation-delay: 1.425s;
+		-o-animation-delay: 1.425s;
+		-ms-animation-delay: 1.425s;
+		-webkit-animation-delay: 1.425s;
+		-moz-animation-delay: 1.425s;
+}
+.cssload-loader .cssload-dot:nth-child(7) {
+	left: 100%;
+	animation-delay: 1.6575s;
+		-o-animation-delay: 1.6575s;
+		-ms-animation-delay: 1.6575s;
+		-webkit-animation-delay: 1.6575s;
+		-moz-animation-delay: 1.6575s;
+}
+.cssload-loader .cssload-dotb {
+	width: 32px;
+	height: 32px;
+	border-radius: 50%;
+	position: absolute;
+	z-index: 1;
+	top: 0px;
+	background: rgb(76,175,79);
+	animation: cssload-swayb 0.38s ease infinite 2.85s, reset 0.95s ease forwards 4.75s;
+		-o-animation: cssload-swayb 0.38s ease infinite 2.85s, reset 0.95s ease forwards 4.75s;
+		-ms-animation: cssload-swayb 0.38s ease infinite 2.85s, reset 0.95s ease forwards 4.75s;
+		-webkit-animation: cssload-swayb 0.38s ease infinite 2.85s, reset 0.95s ease forwards 4.75s;
+		-moz-animation: cssload-swayb 0.38s ease infinite 2.85s, reset 0.95s ease forwards 4.75s;
+}
+.cssload-loader .cssload-dotb:nth-child(1) {
+	left: 14.28571%;
+	animation-delay: 0.2325s;
+		-o-animation-delay: 0.2325s;
+		-ms-animation-delay: 0.2325s;
+		-webkit-animation-delay: 0.2325s;
+		-moz-animation-delay: 0.2325s;
+}
+.cssload-loader .cssload-dotb:nth-child(2) {
+	left: 28.57143%;
+	animation-delay: 0.475s;
+		-o-animation-delay: 0.475s;
+		-ms-animation-delay: 0.475s;
+		-webkit-animation-delay: 0.475s;
+		-moz-animation-delay: 0.475s;
+}
+.cssload-loader .cssload-dotb:nth-child(3) {
+	left: 42.85714%;
+	animation-delay: 0.7075s;
+		-o-animation-delay: 0.7075s;
+		-ms-animation-delay: 0.7075s;
+		-webkit-animation-delay: 0.7075s;
+		-moz-animation-delay: 0.7075s;
+}
+.cssload-loader .cssload-dotb:nth-child(4) {
+	left: 57.14286%;
+	animation-delay: 0.95s;
+		-o-animation-delay: 0.95s;
+		-ms-animation-delay: 0.95s;
+		-webkit-animation-delay: 0.95s;
+		-moz-animation-delay: 0.95s;
+}
+.cssload-loader .cssload-dotb:nth-child(5) {
+	left: 71.42857%;
+	animation-delay: 1.1825s;
+		-o-animation-delay: 1.1825s;
+		-ms-animation-delay: 1.1825s;
+		-webkit-animation-delay: 1.1825s;
+		-moz-animation-delay: 1.1825s;
+}
+.cssload-loader .cssload-dotb:nth-child(6) {
+	left: 85.71429%;
+	animation-delay: 1.425s;
+		-o-animation-delay: 1.425s;
+		-ms-animation-delay: 1.425s;
+		-webkit-animation-delay: 1.425s;
+		-moz-animation-delay: 1.425s;
+}
+.cssload-loader .cssload-dotb:nth-child(7) {
+	left: 100%;
+	animation-delay: 1.6575s;
+		-o-animation-delay: 1.6575s;
+		-ms-animation-delay: 1.6575s;
+		-webkit-animation-delay: 1.6575s;
+		-moz-animation-delay: 1.6575s;
+}
+
+
+
+
+
+@keyframes cssload-sway {
+	from {
+		top: 0px;
+	}
+	to {
+		top: 85px;
+		transform: scale(0.75);
+		z-index: 1;
+		opacity: 0;
+	}
+}
+
+@-o-keyframes cssload-sway {
+	from {
+		top: 0px;
+	}
+	to {
+		top: 85px;
+		-o-transform: scale(0.75);
+		z-index: 1;
+		opacity: 0;
+	}
+}
+
+@-ms-keyframes cssload-sway {
+	from {
+		top: 0px;
+	}
+	to {
+		top: 85px;
+		-ms-transform: scale(0.75);
+		z-index: 1;
+		opacity: 0;
+	}
+}
+
+@-webkit-keyframes cssload-sway {
+	from {
+		top: 0px;
+	}
+	to {
+		top: 85px;
+		-webkit-transform: scale(0.75);
+		z-index: 1;
+		opacity: 0;
+	}
+}
+
+@-moz-keyframes cssload-sway {
+	from {
+		top: 0px;
+	}
+	to {
+		top: 85px;
+		-moz-transform: scale(0.75);
+		z-index: 1;
+		opacity: 0;
+	}
+}
+
+@keyframes cssload-swayb {
+	from {
+		top: 85px;
+		transform: scale(0.75);
+		z-index: 2;
+	}
+	to {
+		top: 0px;
+	}
+}
+
+@-o-keyframes cssload-swayb {
+	from {
+		top: 85px;
+		-o-transform: scale(0.75);
+		z-index: 2;
+	}
+	to {
+		top: 0px;
+	}
+}
+
+@-ms-keyframes cssload-swayb {
+	from {
+		top: 85px;
+		-ms-transform: scale(0.75);
+		z-index: 2;
+	}
+	to {
+		top: 0px;
+	}
+}
+
+@-webkit-keyframes cssload-swayb {
+	from {
+		top: 85px;
+		-webkit-transform: scale(0.75);
+		z-index: 2;
+	}
+	to {
+		top: 0px;
+	}
+}
+
+@-moz-keyframes cssload-swayb {
+	from {
+		top: 85px;
+		-moz-transform: scale(0.75);
+		z-index: 2;
+	}
+	to {
+		top: 0px;
+	}
+}
+
+@keyframes reset {
+	from {
+		top: 0px;
+	}
+	to {
+		top: 0px;
+	}
+}
+
+@-o-keyframes reset {
+	from {
+		top: 0px;
+	}
+	to {
+		top: 0px;
+	}
+}
+
+@-ms-keyframes reset {
+	from {
+		top: 0px;
+	}
+	to {
+		top: 0px;
+	}
+}
+
+@-webkit-keyframes reset {
+	from {
+		top: 0px;
+	}
+	to {
+		top: 0px;
+	}
+}
+
+@-moz-keyframes reset {
+	from {
+		top: 0px;
+	}
+	to {
+		top: 0px;
+	}
+}

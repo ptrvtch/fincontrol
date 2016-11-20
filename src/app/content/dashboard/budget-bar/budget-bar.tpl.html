@@ -1,0 +1,32 @@
+<div flex layout="row" ng-show="vm.loaded">
+    <md-card flex>
+        <md-card-title>
+            <md-card-title-text>
+                <span class="md-headline">Daily</span>
+            </md-card-title-text>
+        </md-card-title>
+        <md-card-content>
+            <h2>{{ vm.getDailyBudget().toFixed(2) }}</h2>
+        </md-card-content>
+    </md-card>
+    <md-card flex>
+        <md-card-title>
+            <md-card-title-text>
+                <span class="md-headline">Weekly</span>
+            </md-card-title-text>
+        </md-card-title>
+        <md-card-content>
+            <h2>{{ vm.getWeeklyBudget().toFixed(2) }}</h2>
+        </md-card-content>
+    </md-card>
+    <md-card flex>
+        <md-card-title>
+            <md-card-title-text>
+                <span class="md-headline">Monthly</span>
+            </md-card-title-text>
+        </md-card-title>
+        <md-card-content>
+            <h2>{{ vm.getMonthlyBudget().toFixed(2) }}</h2>
+        </md-card-content>
+    </md-card>
+</div>
